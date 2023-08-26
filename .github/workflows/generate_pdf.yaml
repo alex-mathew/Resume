@@ -1,6 +1,12 @@
-- name: html to pdf
-  uses: fifsky/html-to-pdf-action@master
-  with:
-    htmlFile: ./resume.html
-    outputFile: ./resume.pdf
-    pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
+name: save_as_pdf
+run-name: ${{ github.actor }} triggered save_as_pdf
+on: [push]
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: fifsky/html-to-pdf-action@master
+        with:
+          htmlFile: ./resume.html
+          outputFile: ./resume.pdf
+          pdfOptions: '{"format": "A4", "margin": {"top": "10mm", "left": "10mm", "right": "10mm", "bottom": "10mm"}}'
